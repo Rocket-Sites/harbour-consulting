@@ -1,0 +1,961 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <!-- The extension resolves a live page back to the repo that backs it
+         through this one tag. The value below is a placeholder the publisher
+         overwrites at deploy time. -->
+    <meta name="source-repo" content="rocket-sites/harbour-consulting" />
+
+    <title data-rs-slot="site.title">Harbour Consulting</title>
+    <meta
+      name="description"
+      data-rs-slot="site.description"
+      content="AI consulting"
+    />
+    <link rel="canonical" href="https://example.com/" data-rs-slot="site.canonical" />
+
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content="Harbour Consulting" data-rs-slot="site.title" />
+    <meta
+      property="og:description"
+      data-rs-slot="site.description"
+      content="AI consulting"
+    />
+    <meta property="og:url" content="https://example.com/" data-rs-slot="site.canonical" />
+    <meta
+      property="og:image"
+      content="https://example.com/assets/og-image.png"
+      data-rs-slot="site.og_image"
+    />
+    <meta name="twitter:card" content="summary_large_image" />
+
+    <link rel="icon" href="assets/favicon.svg" type="image/svg+xml" />
+    <link rel="stylesheet" href="styles.css" />
+
+    <!-- Behaviour switches (templates/SLOTS.md section 6b). Each is a slot: set
+         it to "on" and the behaviour ships with the site. They are "off" here
+         so a site behaves exactly as it did before somebody asked for one.
+
+         The code is behaviours.js, which is part of this template. It runs in
+         the visitor's browser, fetches nothing, and enhances markup that
+         already works without it. A published Rocket Site has no server behind
+         it; that has never meant it cannot run script. -->
+    <meta name="rs-behaviour-mobile-nav" content="off" data-rs-slot="behaviour.mobile_nav" />
+    <meta name="rs-behaviour-faq-accordion" content="off" data-rs-slot="behaviour.faq_accordion" />
+
+    <!-- Deferred: nothing here touches the page before it is parsed. Beacon
+         loads its copy eagerly because its theme behaviour has to set an
+         attribute on <html> before the first paint; forge ships no theme
+         behaviour, so there is nothing to race. -->
+    <script src="behaviours.js" defer></script>
+  </head>
+
+  <body class="bg-canvas font-sans text-ink antialiased lg:pl-72">
+    <a
+      href="#main"
+      class="sr-only rounded-lg bg-ink px-4 py-2 text-sm font-semibold text-canvas focus:not-sr-only focus:absolute focus:left-4 focus:top-4 focus:z-[60]"
+      >Skip to main content</a
+    >
+
+    <!-- ─── The rail ───────────────────────────────────────────────────────
+         A standing sidebar on large screens and a sticky bar on small ones,
+         which is the one structural decision the rest of this template is
+         arranged around. It is why the body carries lg:pl-72, why the nav
+         labels are sentences rather than single words, and why the phone
+         number is in the chrome on every page instead of only in the contact
+         section: a rail has the room for it and a bar across the top does not.
+         The small screen menu is a native disclosure and opens with scripting
+         off. behaviour.mobile_nav, when a site turns it on, adds the closing
+         that the element cannot do for itself; the code is behaviours.js and it
+         ships with this template. -->
+    <header
+      id="rail"
+      class="sticky top-0 z-40 border-b border-hairline bg-surface lg:fixed lg:inset-y-0 lg:left-0 lg:flex lg:w-72 lg:flex-col lg:overflow-y-auto lg:border-b-0 lg:border-r"
+    >
+      <div
+        class="flex items-center justify-between gap-4 px-4 py-3 sm:px-6 lg:block lg:px-6 lg:py-8"
+      >
+        <a
+          href="#hero"
+          class="flex items-center gap-3 rounded-sm focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-accent"
+        >
+          <img
+            src="assets/logo.svg"
+            alt=""
+            aria-hidden="true"
+            width="40"
+            height="40"
+            class="h-9 w-9"
+          />
+          <span
+            class="font-display text-xl font-bold tracking-tight text-ink"
+            data-rs-slot="business.name"
+            >Harbour Consulting</span
+          >
+        </a>
+
+        <!-- Native disclosure, so the menu opens and closes with scripting
+             off. behaviour.mobile_nav adds only what the element cannot do for
+             itself: close on Escape, on an outside click, and after a visitor
+             follows a link to another part of this page. -->
+        <details class="relative lg:hidden" data-rs-mobile-nav>
+          <summary
+            class="flex h-10 w-10 cursor-pointer list-none items-center justify-center rounded-lg border border-hairline text-ink focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-accent"
+          >
+            <span class="sr-only">Menu</span>
+            <svg
+              class="h-5 w-5"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="2"
+              stroke-linecap="round"
+              aria-hidden="true"
+            >
+              <path d="M4 7h16M4 12h16M4 17h16" />
+            </svg>
+          </summary>
+          <ul
+            class="absolute right-0 z-50 mt-3 w-64 rounded-xl border border-hairline bg-surface p-2 text-sm font-semibold text-ink shadow-2xl"
+          >
+            <li><a href="#process" class="block rounded-lg px-3 py-2 hover:bg-canvas">How a job runs</a></li>
+            <li><a href="#services" class="block rounded-lg px-3 py-2 hover:bg-canvas">What we take on</a></li>
+            <li><a href="#pricing" class="block rounded-lg px-3 py-2 hover:bg-canvas">What it costs</a></li>
+            <li><a href="#testimonials" class="block rounded-lg px-3 py-2 hover:bg-canvas">What people say</a></li>
+            <li><a href="#about" class="block rounded-lg px-3 py-2 hover:bg-canvas">The workshop</a></li>
+            <li><a href="#faq" class="block rounded-lg px-3 py-2 hover:bg-canvas">Questions</a></li>
+            <li class="mt-2 border-t border-hairline pt-2">
+              <a
+                href="tel:+0000000000"
+                data-rs-slot="contact.phone_href"
+                class="block rounded-lg px-3 py-2 hover:bg-canvas"
+                ><span data-rs-slot="contact.phone">Add your phone number</span></a
+              >
+            </li>
+            <li>
+              <a
+                href="#contact"
+                class="mt-1 block rounded-lg bg-accent px-3 py-2 text-center text-on-accent"
+                data-rs-slot="nav.cta"
+                >Ask for a quote</a
+              >
+            </li>
+          </ul>
+        </details>
+      </div>
+
+      <nav class="hidden px-6 lg:block" aria-label="Primary">
+        <ul class="space-y-1 text-sm font-semibold">
+          <li>
+            <a
+              href="#process"
+              class="block rounded-lg px-3 py-2 text-muted hover:bg-canvas hover:text-ink focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-accent"
+              >How a job runs</a
+            >
+          </li>
+          <li>
+            <a
+              href="#services"
+              class="block rounded-lg px-3 py-2 text-muted hover:bg-canvas hover:text-ink focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-accent"
+              >What we take on</a
+            >
+          </li>
+          <li>
+            <a
+              href="#pricing"
+              class="block rounded-lg px-3 py-2 text-muted hover:bg-canvas hover:text-ink focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-accent"
+              >What it costs</a
+            >
+          </li>
+          <li>
+            <a
+              href="#testimonials"
+              class="block rounded-lg px-3 py-2 text-muted hover:bg-canvas hover:text-ink focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-accent"
+              >What people say</a
+            >
+          </li>
+          <li>
+            <a
+              href="#about"
+              class="block rounded-lg px-3 py-2 text-muted hover:bg-canvas hover:text-ink focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-accent"
+              >The workshop</a
+            >
+          </li>
+          <li>
+            <a
+              href="#faq"
+              class="block rounded-lg px-3 py-2 text-muted hover:bg-canvas hover:text-ink focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-accent"
+              >Questions</a
+            >
+          </li>
+        </ul>
+      </nav>
+
+      <div class="mt-auto hidden px-6 pb-8 pt-10 lg:block">
+        <p class="text-xs font-semibold uppercase tracking-[0.18em] text-muted">
+          Call the workshop
+        </p>
+        <a
+          href="tel:+0000000000"
+          data-rs-slot="contact.phone_href"
+          class="mt-2 block font-display text-lg text-ink underline decoration-hairline underline-offset-4 hover:decoration-accent focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-accent"
+          ><span data-rs-slot="contact.phone">Add your phone number</span></a
+        >
+        <a
+          href="#contact"
+          class="mt-5 block rounded-full bg-accent px-5 py-3 text-center text-sm font-semibold text-on-accent hover:bg-accent/90 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-accent"
+          data-rs-slot="nav.cta"
+          >Ask for a quote</a
+        >
+      </div>
+    </header>
+
+    <main id="main" tabindex="-1">
+      <!-- ─── Hero ─────────────────────────────────────────────────────── -->
+      <section id="hero" aria-labelledby="hero-heading" class="bg-canvas">
+        <div class="mx-auto max-w-5xl px-4 py-20 sm:px-6 lg:px-10 lg:py-32">
+          <p class="flex items-center gap-4">
+            <span class="h-px w-10 bg-accent" aria-hidden="true"></span>
+            <span
+              class="text-xs font-semibold uppercase tracking-[0.22em] text-accent"
+              data-rs-slot="hero.eyebrow"
+              >Workshop and on site</span
+            >
+          </p>
+
+          <h1
+            id="hero-heading"
+            class="mt-8 max-w-3xl font-display text-4xl font-bold leading-[1.05] tracking-tight text-ink sm:text-6xl lg:text-7xl"
+            data-rs-slot="hero.heading"
+          >
+            Measured twice, quoted once, finished when we said
+          </h1>
+
+          <p class="mt-8 max-w-2xl text-lg leading-8 text-muted" data-rs-slot="hero.body">
+            We take on a small number of jobs at a time and finish them in the order we
+            started them. You will have the price and the week before anything is cut, and
+            the person who quoted it is the person who makes it.
+          </p>
+
+          <div class="mt-10 flex flex-wrap items-center gap-3">
+            <a
+              href="#contact"
+              class="rounded-full bg-accent px-6 py-3 text-sm font-semibold text-on-accent hover:bg-accent/90 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-accent"
+              data-rs-slot="hero.cta_primary"
+              >Tell us about the job</a
+            >
+            <a
+              href="#process"
+              class="rounded-full border border-hairline px-6 py-3 text-sm font-semibold text-ink hover:bg-surface focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-accent"
+              data-rs-slot="hero.cta_secondary"
+              >See how a job runs</a
+            >
+          </div>
+        </div>
+      </section>
+
+      <!-- ─── Process ──────────────────────────────────────────────────────
+           The section beacon has no equivalent of, and the reason the
+           process.* names were added to the shared vocabulary. The step
+           numbers are the browser's list markers rather than content: adding a
+           step renumbers the list, which is not true of a number typed into
+           the markup or written into a slot. -->
+      <section id="process" aria-labelledby="process-heading" class="border-t border-hairline bg-surface">
+        <div class="mx-auto max-w-5xl px-4 py-16 sm:px-6 lg:px-10 lg:py-24">
+          <h2
+            id="process-heading"
+            class="font-display text-3xl font-bold tracking-tight text-ink sm:text-4xl"
+            data-rs-slot="process.heading"
+          >
+            How a job runs
+          </h2>
+          <p class="mt-4 max-w-2xl text-lg leading-8 text-muted" data-rs-slot="process.intro">
+            Four steps, in this order, every time. At the end of each one you are told what
+            happens next and what it will cost.
+          </p>
+
+          <ol
+            class="mt-12 list-decimal space-y-6 pl-8 marker:font-display marker:text-2xl marker:font-bold marker:text-accent sm:pl-10"
+          >
+            <li
+              class="rounded-2xl border border-hairline bg-canvas p-6 sm:p-8"
+              data-rs-slot-group="process.step"
+            >
+              <h3
+                class="font-display text-xl font-bold text-ink"
+                data-rs-slot="process.step.title"
+              >
+                We come and measure it
+              </h3>
+              <p class="mt-3 leading-7 text-muted" data-rs-slot="process.step.body">
+                Or we work from your drawing if you have one. There is no charge for this
+                part and nothing is owed afterwards if you decide not to go ahead.
+              </p>
+            </li>
+
+            <li
+              class="rounded-2xl border border-hairline bg-canvas p-6 sm:p-8"
+              data-rs-slot-group="process.step"
+            >
+              <h3
+                class="font-display text-xl font-bold text-ink"
+                data-rs-slot="process.step.title"
+              >
+                You get it in writing
+              </h3>
+              <p class="mt-3 leading-7 text-muted" data-rs-slot="process.step.body">
+                One page, itemised, with the lead time on it. Nothing is ordered and no
+                metal is cut until you have said yes to that page.
+              </p>
+            </li>
+
+            <li
+              class="rounded-2xl border border-hairline bg-canvas p-6 sm:p-8"
+              data-rs-slot-group="process.step"
+            >
+              <h3
+                class="font-display text-xl font-bold text-ink"
+                data-rs-slot="process.step.title"
+              >
+                It is made here
+              </h3>
+              <p class="mt-3 leading-7 text-muted" data-rs-slot="process.step.body">
+                In our own workshop, by the people who quoted it. You get a photograph at
+                the point where changing your mind is still cheap.
+              </p>
+            </li>
+
+            <li
+              class="rounded-2xl border border-hairline bg-canvas p-6 sm:p-8"
+              data-rs-slot-group="process.step"
+            >
+              <h3
+                class="font-display text-xl font-bold text-ink"
+                data-rs-slot="process.step.title"
+              >
+                We fit it and clean up
+              </h3>
+              <p class="mt-3 leading-7 text-muted" data-rs-slot="process.step.body">
+                Then we walk you around it before we go. Anything not right on the day is
+                put right on the day.
+              </p>
+            </li>
+          </ol>
+        </div>
+      </section>
+
+      <!-- ─── Services ─────────────────────────────────────────────────────
+           Full width rows rather than a grid of cards, which is what wanted
+           the optional services.item.detail field: each row has a right hand
+           column, and the two existing fields left it empty. -->
+      <section id="services" aria-labelledby="services-heading" class="border-t border-hairline bg-canvas">
+        <div class="mx-auto max-w-5xl px-4 py-16 sm:px-6 lg:px-10 lg:py-24">
+          <h2
+            id="services-heading"
+            class="font-display text-3xl font-bold tracking-tight text-ink sm:text-4xl"
+            data-rs-slot="services.heading"
+          >
+            What we take on
+          </h2>
+          <p class="mt-4 max-w-2xl text-lg leading-8 text-muted" data-rs-slot="services.intro">
+            Three kinds of work. Most jobs are one of the first two, and the third is what
+            we do between them.
+          </p>
+
+          <div class="mt-12 border-t border-hairline">
+            <article
+              class="grid gap-4 border-b border-hairline py-8 md:grid-cols-[1fr_14rem] md:gap-10"
+              data-rs-slot-group="services.item"
+            >
+              <div>
+                <h3
+                  class="font-display text-2xl font-bold text-ink"
+                  data-rs-slot="services.item.title"
+                >
+                  Fabrication
+                </h3>
+                <p class="mt-3 max-w-2xl leading-7 text-muted" data-rs-slot="services.item.body">
+                  One-off pieces made to a drawing, or to a measurement we take ourselves.
+                  Stairs, balustrades, gates, frames, brackets, and the awkward part nobody
+                  else wanted to quote on.
+                </p>
+              </div>
+              <p class="md:text-right">
+                <span
+                  class="inline-flex rounded-full border border-hairline px-4 py-1.5 text-sm font-semibold text-accent"
+                  data-rs-slot="services.item.detail"
+                  >Quoted per job</span
+                >
+              </p>
+            </article>
+
+            <article
+              class="grid gap-4 border-b border-hairline py-8 md:grid-cols-[1fr_14rem] md:gap-10"
+              data-rs-slot-group="services.item"
+            >
+              <div>
+                <h3
+                  class="font-display text-2xl font-bold text-ink"
+                  data-rs-slot="services.item.title"
+                >
+                  Repairs and alterations
+                </h3>
+                <p class="mt-3 max-w-2xl leading-7 text-muted" data-rs-slot="services.item.body">
+                  Something that has bent, cracked, rusted or stopped closing properly. We
+                  will tell you plainly when a repair is worth less than a replacement,
+                  including when that costs us the work.
+                </p>
+              </div>
+              <p class="md:text-right">
+                <span
+                  class="inline-flex rounded-full border border-hairline px-4 py-1.5 text-sm font-semibold text-accent"
+                  data-rs-slot="services.item.detail"
+                  >Usually within the week</span
+                >
+              </p>
+            </article>
+
+            <article
+              class="grid gap-4 border-b border-hairline py-8 md:grid-cols-[1fr_14rem] md:gap-10"
+              data-rs-slot-group="services.item"
+            >
+              <div>
+                <h3
+                  class="font-display text-2xl font-bold text-ink"
+                  data-rs-slot="services.item.title"
+                >
+                  Site work
+                </h3>
+                <p class="mt-3 max-w-2xl leading-7 text-muted" data-rs-slot="services.item.body">
+                  Cutting, welding and installation at your place rather than ours, for
+                  work that cannot come to the workshop or should not be moved twice.
+                </p>
+              </div>
+              <p class="md:text-right">
+                <span
+                  class="inline-flex rounded-full border border-hairline px-4 py-1.5 text-sm font-semibold text-accent"
+                  data-rs-slot="services.item.detail"
+                  >Booked by the day</span
+                >
+              </p>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <!-- ─── Pricing ──────────────────────────────────────────────────────
+           The one inverted band on the page. It is bg-ink text-canvas, exactly
+           the pair beacon uses for its dark contact section, and here it comes
+           out light because the tokens are the other way round. No new token
+           was needed to invert a dark template.
+
+           pricing.tier.price is free text on purpose. What a small business
+           will say in public is a shape rather than a figure, and a money type
+           here would invite the tooling to format a number nobody promised. -->
+      <section id="pricing" aria-labelledby="pricing-heading" class="bg-ink text-canvas">
+        <div class="mx-auto max-w-5xl px-4 py-16 sm:px-6 lg:px-10 lg:py-24">
+          <h2
+            id="pricing-heading"
+            class="font-display text-3xl font-bold tracking-tight sm:text-4xl"
+            data-rs-slot="pricing.heading"
+          >
+            What it costs
+          </h2>
+          <p class="mt-4 max-w-2xl text-lg leading-8" data-rs-slot="pricing.intro">
+            Every job is quoted before it starts. These are the three ways that quote gets
+            put together, so you know in advance which one yours will be.
+          </p>
+
+          <div class="mt-12 grid gap-6 md:grid-cols-3">
+            <article
+              class="flex flex-col rounded-2xl border-2 border-canvas/25 p-7"
+              data-rs-slot-group="pricing.tier"
+            >
+              <h3 class="font-display text-xl font-bold" data-rs-slot="pricing.tier.name">
+                Fixed job price
+              </h3>
+              <p
+                class="mt-2 font-display text-3xl font-bold"
+                data-rs-slot="pricing.tier.price"
+              >
+                Quoted per job
+              </p>
+              <p class="mt-4 leading-7" data-rs-slot="pricing.tier.body">
+                For work that can be drawn and measured. One number on one page, and it
+                does not move unless you change what you asked for.
+              </p>
+            </article>
+
+            <article
+              class="flex flex-col rounded-2xl border-2 border-canvas/25 p-7"
+              data-rs-slot-group="pricing.tier"
+            >
+              <h3 class="font-display text-xl font-bold" data-rs-slot="pricing.tier.name">
+                Day rate
+              </h3>
+              <p
+                class="mt-2 font-display text-3xl font-bold"
+                data-rs-slot="pricing.tier.price"
+              >
+                Booked by the day
+              </p>
+              <p class="mt-4 leading-7" data-rs-slot="pricing.tier.body">
+                For site work, and for jobs where the scope genuinely is not knowable up
+                front. Whole days, at a rate agreed before the first one.
+              </p>
+            </article>
+
+            <article
+              class="flex flex-col rounded-2xl border-2 border-canvas/25 p-7"
+              data-rs-slot-group="pricing.tier"
+            >
+              <h3 class="font-display text-xl font-bold" data-rs-slot="pricing.tier.name">
+                Standing arrangement
+              </h3>
+              <p
+                class="mt-2 font-display text-3xl font-bold"
+                data-rs-slot="pricing.tier.price"
+              >
+                Monthly
+              </p>
+              <p class="mt-4 leading-7" data-rs-slot="pricing.tier.body">
+                For maintenance that keeps coming back. A set amount of workshop time each
+                month, and first call on the diary when something breaks.
+              </p>
+            </article>
+          </div>
+
+          <p class="mt-10">
+            <a
+              href="#contact"
+              class="inline-flex rounded-full bg-canvas px-6 py-3 text-sm font-semibold text-ink hover:bg-canvas/90 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-canvas"
+              data-rs-slot="nav.cta"
+              >Ask for a quote</a
+            >
+          </p>
+        </div>
+      </section>
+
+      <!-- ─── Testimonials ─────────────────────────────────────────────────
+           Two full width quotes rather than a grid of three cards. Two is the
+           floor the vocabulary sets for a group, and it is here on purpose: a
+           template that ships more placeholder quotes than a new business can
+           honestly replace encourages somebody to invent one. -->
+      <section
+        id="testimonials"
+        aria-labelledby="testimonials-heading"
+        class="border-t border-hairline bg-canvas"
+      >
+        <div class="mx-auto max-w-5xl px-4 py-16 sm:px-6 lg:px-10 lg:py-24">
+          <h2
+            id="testimonials-heading"
+            class="font-display text-3xl font-bold tracking-tight text-ink sm:text-4xl"
+            data-rs-slot="testimonials.heading"
+          >
+            What people say
+          </h2>
+          <p
+            class="mt-4 max-w-2xl text-lg leading-8 text-muted"
+            data-rs-slot="testimonials.intro"
+          >
+            Replace both of these with real quotes, from real customers, with their
+            permission.
+          </p>
+
+          <div class="mt-12 space-y-10">
+            <figure
+              class="border-l-2 border-accent pl-6 sm:pl-10"
+              data-rs-slot-group="testimonials.item"
+            >
+              <blockquote>
+                <p
+                  class="font-display text-2xl leading-9 text-ink sm:text-3xl sm:leading-[1.35]"
+                  data-rs-slot="testimonials.item.quote"
+                >
+                  They quoted the job nobody else would come and look at, and the number on
+                  the invoice was the number on the quote.
+                </p>
+              </blockquote>
+              <figcaption class="mt-5 text-sm">
+                <span class="font-semibold text-ink" data-rs-slot="testimonials.item.name"
+                  >Customer name</span
+                >
+                <span class="text-muted" data-rs-slot="testimonials.item.role"
+                  >Job, suburb</span
+                >
+              </figcaption>
+            </figure>
+
+            <figure
+              class="border-l-2 border-accent pl-6 sm:pl-10"
+              data-rs-slot-group="testimonials.item"
+            >
+              <blockquote>
+                <p
+                  class="font-display text-2xl leading-9 text-ink sm:text-3xl sm:leading-[1.35]"
+                  data-rs-slot="testimonials.item.quote"
+                >
+                  It went in on the day they said it would, and they took the old one away
+                  without being asked.
+                </p>
+              </blockquote>
+              <figcaption class="mt-5 text-sm">
+                <span class="font-semibold text-ink" data-rs-slot="testimonials.item.name"
+                  >Customer name</span
+                >
+                <span class="text-muted" data-rs-slot="testimonials.item.role"
+                  >Job, suburb</span
+                >
+              </figcaption>
+            </figure>
+          </div>
+        </div>
+      </section>
+
+      <!-- ─── About ────────────────────────────────────────────────────── -->
+      <section id="about" aria-labelledby="about-heading" class="border-t border-hairline bg-surface">
+        <div
+          class="mx-auto grid max-w-5xl items-center gap-12 px-4 py-16 sm:px-6 lg:grid-cols-2 lg:px-10 lg:py-24"
+        >
+          <div>
+            <img
+              data-rs-slot="about.image"
+              data-rs-slot-alt="about.image_alt"
+              src="assets/workshop-placeholder.svg"
+              alt="Placeholder graphic. Replace with a photograph of the workshop or of finished work."
+              width="800"
+              height="600"
+              class="h-auto w-full rounded-2xl border border-hairline"
+            />
+          </div>
+
+          <div>
+            <h2
+              id="about-heading"
+              class="font-display text-3xl font-bold tracking-tight text-ink sm:text-4xl"
+              data-rs-slot="about.heading"
+            >
+              The workshop
+            </h2>
+            <p class="mt-5 text-lg leading-8 text-muted" data-rs-slot="about.body">
+              A small shop that would rather do a few jobs properly than many of them
+              quickly. Everything is made on the premises, so the person who takes the
+              measurement is the person who cuts to it, and there is nobody to pass the
+              blame to when it is out. We say no to work we are not set up for, and we say
+              it early, which is usually the most useful thing we can do for you.
+            </p>
+          </div>
+        </div>
+      </section>
+
+      <!-- ─── FAQ ──────────────────────────────────────────────────────── -->
+      <section id="faq" aria-labelledby="faq-heading" class="border-t border-hairline bg-canvas">
+        <div class="mx-auto max-w-5xl px-4 py-16 sm:px-6 lg:px-10 lg:py-24">
+          <h2
+            id="faq-heading"
+            class="font-display text-3xl font-bold tracking-tight text-ink sm:text-4xl"
+            data-rs-slot="faq.heading"
+          >
+            Questions we get asked first
+          </h2>
+          <p class="mt-4 max-w-2xl text-lg leading-8 text-muted" data-rs-slot="faq.intro">
+            If yours is not here, call and ask it. The answer is usually shorter than the
+            question.
+          </p>
+
+          <div class="mt-10 grid gap-4 md:grid-cols-2">
+            <details
+              class="group rounded-2xl border border-hairline bg-surface p-6"
+              data-rs-slot-group="faq.item"
+            >
+              <summary
+                class="flex cursor-pointer list-none items-start justify-between gap-4 text-left font-semibold text-ink focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-accent"
+              >
+                <span data-rs-slot="faq.item.question">Do you charge to come and quote?</span>
+                <svg
+                  class="mt-1 h-4 w-4 shrink-0 text-accent transition group-open:rotate-180"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="2.2"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  aria-hidden="true"
+                >
+                  <path d="m6 9 6 6 6-6" />
+                </svg>
+              </summary>
+              <p class="mt-4 leading-7 text-muted" data-rs-slot="faq.item.answer">
+                Not for the visit or the quote. If you need drawings prepared before there
+                is anything to quote on, that is separate work and we will say so before
+                doing any of it.
+              </p>
+            </details>
+
+            <details
+              class="group rounded-2xl border border-hairline bg-surface p-6"
+              data-rs-slot-group="faq.item"
+            >
+              <summary
+                class="flex cursor-pointer list-none items-start justify-between gap-4 text-left font-semibold text-ink focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-accent"
+              >
+                <span data-rs-slot="faq.item.question">How far ahead are you booked?</span>
+                <svg
+                  class="mt-1 h-4 w-4 shrink-0 text-accent transition group-open:rotate-180"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="2.2"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  aria-hidden="true"
+                >
+                  <path d="m6 9 6 6 6-6" />
+                </svg>
+              </summary>
+              <p class="mt-4 leading-7 text-muted" data-rs-slot="faq.item.answer">
+                It moves with the season, so the honest answer is on the quote rather than
+                on this page. Repairs are normally fitted in sooner than fabrication.
+              </p>
+            </details>
+
+            <details
+              class="group rounded-2xl border border-hairline bg-surface p-6"
+              data-rs-slot-group="faq.item"
+            >
+              <summary
+                class="flex cursor-pointer list-none items-start justify-between gap-4 text-left font-semibold text-ink focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-accent"
+              >
+                <span data-rs-slot="faq.item.question">Will you work from my drawing?</span>
+                <svg
+                  class="mt-1 h-4 w-4 shrink-0 text-accent transition group-open:rotate-180"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="2.2"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  aria-hidden="true"
+                >
+                  <path d="m6 9 6 6 6-6" />
+                </svg>
+              </summary>
+              <p class="mt-4 leading-7 text-muted" data-rs-slot="faq.item.answer">
+                Yes, and we will check it against the opening before anything is cut. If
+                the drawing and the building disagree, you hear about it that day rather
+                than on delivery day.
+              </p>
+            </details>
+
+            <details
+              class="group rounded-2xl border border-hairline bg-surface p-6"
+              data-rs-slot-group="faq.item"
+            >
+              <summary
+                class="flex cursor-pointer list-none items-start justify-between gap-4 text-left font-semibold text-ink focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-accent"
+              >
+                <span data-rs-slot="faq.item.question">What if it is not right?</span>
+                <svg
+                  class="mt-1 h-4 w-4 shrink-0 text-accent transition group-open:rotate-180"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="2.2"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  aria-hidden="true"
+                >
+                  <path d="m6 9 6 6 6-6" />
+                </svg>
+              </summary>
+              <p class="mt-4 leading-7 text-muted" data-rs-slot="faq.item.answer">
+                Tell us and we come back. Our own mistakes are put right at our cost, and
+                we would rather hear about one early than find out from somebody else
+                later.
+              </p>
+            </details>
+          </div>
+        </div>
+      </section>
+
+      <!-- ─── Contact ──────────────────────────────────────────────────────
+           No form. There is no server behind this site to receive one, and a
+           form that silently posts nowhere drops a client's leads without
+           anybody noticing. An agency that already runs an endpoint can add a
+           form here and point its action at the contact.form_action slot. -->
+      <section id="contact" aria-labelledby="contact-heading" class="border-t border-hairline bg-surface">
+        <div class="mx-auto max-w-5xl px-4 py-16 sm:px-6 lg:px-10 lg:py-24">
+          <div class="grid gap-12 lg:grid-cols-[1fr_20rem]">
+            <div>
+              <h2
+                id="contact-heading"
+                class="font-display text-3xl font-bold tracking-tight text-ink sm:text-4xl"
+                data-rs-slot="contact.heading"
+              >
+                Ask for a quote
+              </h2>
+              <p class="mt-4 max-w-xl text-lg leading-8 text-muted" data-rs-slot="contact.intro">
+                Send a photograph and a rough measurement, or call and describe it. Either
+                is enough for us to tell you whether it is a job we should be doing.
+              </p>
+
+              <div class="mt-8 flex flex-wrap gap-3">
+                <a
+                  href="mailto:hello@harbour.com.au"
+                  data-rs-slot="contact.email_href"
+                  class="rounded-full bg-accent px-6 py-3 text-sm font-semibold text-on-accent hover:bg-accent/90 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-accent"
+                  >Send a photograph</a
+                >
+                <a
+                  href="tel:+0000000000"
+                  data-rs-slot="contact.phone_href"
+                  class="rounded-full border border-hairline px-6 py-3 text-sm font-semibold text-ink hover:bg-canvas focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-accent"
+                  >Call the workshop</a
+                >
+              </div>
+            </div>
+
+            <dl class="divide-y divide-hairline rounded-2xl border border-hairline bg-canvas">
+              <div class="p-6">
+                <dt class="text-xs font-semibold uppercase tracking-[0.18em] text-muted">
+                  Workshop
+                </dt>
+                <dd class="mt-2 leading-7 text-ink" data-rs-slot="contact.address">
+                  Add your workshop address here
+                </dd>
+              </div>
+              <div class="p-6">
+                <dt class="text-xs font-semibold uppercase tracking-[0.18em] text-muted">
+                  Phone
+                </dt>
+                <dd class="mt-2 leading-7 text-ink">
+                  <a
+                    href="tel:+0000000000"
+                    data-rs-slot="contact.phone_href"
+                    class="underline decoration-hairline underline-offset-4 hover:decoration-accent focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-accent"
+                    ><span data-rs-slot="contact.phone">Add your phone number</span></a
+                  >
+                </dd>
+              </div>
+              <div class="p-6">
+                <dt class="text-xs font-semibold uppercase tracking-[0.18em] text-muted">
+                  Email
+                </dt>
+                <dd class="mt-2 leading-7 text-ink">
+                  <a
+                    href="mailto:hello@harbour.com.au"
+                    data-rs-slot="contact.email_href"
+                    class="underline decoration-hairline underline-offset-4 hover:decoration-accent focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-accent"
+                    ><span data-rs-slot="contact.email">hello@harbour.com.au</span></a
+                  >
+                </dd>
+              </div>
+              <div class="p-6">
+                <dt class="text-xs font-semibold uppercase tracking-[0.18em] text-muted">
+                  Open
+                </dt>
+                <dd class="mt-2 leading-7 text-ink" data-rs-slot="contact.hours">
+                  Monday to Friday, workshop hours
+                </dd>
+              </div>
+            </dl>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <!-- ─── Footer ─────────────────────────────────────────────────────── -->
+    <footer id="footer" class="border-t border-hairline bg-canvas">
+      <div class="mx-auto max-w-5xl px-4 py-12 sm:px-6 lg:px-10">
+        <div class="grid gap-10 sm:grid-cols-2">
+          <div>
+            <div class="flex items-center gap-3">
+              <img
+                src="assets/logo.svg"
+                alt=""
+                aria-hidden="true"
+                width="40"
+                height="40"
+                class="h-8 w-8"
+              />
+              <span
+                class="font-display text-base font-bold tracking-tight text-ink"
+                data-rs-slot="business.name"
+                >Harbour Consulting</span
+              >
+            </div>
+            <p class="mt-4 max-w-xs leading-7 text-muted" data-rs-slot="business.tagline">AI consulting</p>
+          </div>
+
+          <div class="grid gap-8 sm:grid-cols-2">
+            <nav aria-label="Footer">
+              <h2 class="text-xs font-semibold uppercase tracking-[0.18em] text-ink">Site</h2>
+              <ul class="mt-4 space-y-2 text-muted">
+                <li>
+                  <a
+                    href="#process"
+                    class="rounded-sm hover:text-accent focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-accent"
+                    >How a job runs</a
+                  >
+                </li>
+                <li>
+                  <a
+                    href="#services"
+                    class="rounded-sm hover:text-accent focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-accent"
+                    >What we take on</a
+                  >
+                </li>
+                <li>
+                  <a
+                    href="#pricing"
+                    class="rounded-sm hover:text-accent focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-accent"
+                    >What it costs</a
+                  >
+                </li>
+                <li>
+                  <a
+                    href="#contact"
+                    class="rounded-sm hover:text-accent focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-accent"
+                    >Contact</a
+                  >
+                </li>
+              </ul>
+            </nav>
+
+            <nav aria-label="Legal">
+              <h2 class="text-xs font-semibold uppercase tracking-[0.18em] text-ink">Legal</h2>
+              <ul class="mt-4 space-y-2 text-muted">
+                <li>
+                  <a
+                    href="privacy.html"
+                    class="rounded-sm hover:text-accent focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-accent"
+                    >Privacy policy</a
+                  >
+                </li>
+                <li>
+                  <a
+                    href="terms.html"
+                    class="rounded-sm hover:text-accent focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-accent"
+                    >Terms of use</a
+                  >
+                </li>
+              </ul>
+            </nav>
+          </div>
+        </div>
+
+        <div
+          class="mt-10 flex flex-col gap-3 border-t border-hairline pt-6 text-sm text-muted sm:flex-row sm:items-center sm:justify-between"
+        >
+          <p data-rs-slot="footer.blurb">
+            Built to be edited. Every line on this page is meant to be replaced.
+          </p>
+          <p data-rs-slot="footer.copyright">&copy; Your business name</p>
+        </div>
+      </div>
+    </footer>
+  </body>
+</html>

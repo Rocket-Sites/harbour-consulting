@@ -1,0 +1,6 @@
+# styles.css is compiled from tailwind.css by the publisher on every deploy.
+# A committed copy drifts away from its input and nobody notices until a class
+# stops working on a client's live site.
+styles.css
+_site/
+node_modules/

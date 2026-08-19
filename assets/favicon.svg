@@ -1,0 +1,11 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" role="img" aria-label="Forge">
+  <!-- Colours are literal here, not brand tokens: a favicon is fetched by the
+       browser as its own document and inherits nothing from the page. A rebrand
+       replaces this file. -->
+  <rect width="32" height="32" rx="8" fill="#f0873f"/>
+  <g fill="none" stroke="#12100e" stroke-width="2.4" stroke-linecap="round">
+    <path d="M8 23.5h16"/>
+    <path d="M10.5 18.5 16 11l5.5 7.5"/>
+    <path d="M16 11V6.5"/>
+  </g>
+</svg>

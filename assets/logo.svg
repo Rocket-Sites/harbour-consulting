@@ -1,0 +1,13 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 40 40" width="40" height="40" aria-hidden="true" focusable="false">
+  <!-- The rail mark. It sits next to the business name in text, so it is
+       decorative and every page marks it aria-hidden. Replace this one file to
+       change the mark; nothing in the HTML needs to move. -->
+  <rect width="40" height="40" rx="10" fill="#f0873f"/>
+  <g fill="none" stroke="#12100e" stroke-width="2.8" stroke-linecap="round">
+    <!-- the bench -->
+    <path d="M10 29h20"/>
+    <!-- the work, struck -->
+    <path d="M13 23.5 20 14l7 9.5"/>
+    <path d="M20 14V8.5"/>
+  </g>
+</svg>

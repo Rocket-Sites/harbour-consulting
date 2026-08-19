@@ -1,0 +1,161 @@
+{
+  "schema_version": 1,
+  "template": {
+    "slug": "forge",
+    "version": "1.1.3"
+  },
+  "source_repo": "rocket-sites/harbour-consulting",
+  "site": {
+    "title": "Harbour Consulting",
+    "description": "AI consulting",
+    "canonical_url": "https://example.com/"
+  },
+  "brand": {
+    "color-canvas": "#12100e",
+    "color-surface": "#1d1a17",
+    "color-ink": "#f4f0ea",
+    "color-muted": "#a89f94",
+    "color-accent": "#f0873f",
+    "color-on-accent": "#12100e",
+    "color-hairline": "#7a7065",
+    "font-sans": "ui-sans-serif, system-ui, -apple-system, \"Segoe UI\", Roboto, \"Helvetica Neue\", Arial, sans-serif",
+    "font-display": "ui-serif, Georgia, Cambria, \"Times New Roman\", Times, serif",
+    "logo": "assets/logo.svg",
+    "favicon": "assets/favicon.svg"
+  },
+  "slots": {
+    "behaviour.mobile_nav": "off",
+    "behaviour.faq_accordion": "off",
+    "site.title": "Harbour Consulting",
+    "site.description": "AI consulting",
+    "site.canonical": "https://example.com/",
+    "site.og_image": "https://example.com/assets/og-image.png",
+    "business.name": "Harbour Consulting",
+    "business.tagline": "AI consulting",
+    "nav.cta": "Ask for a quote",
+    "hero.eyebrow": "Workshop and on site",
+    "hero.heading": "Measured twice, quoted once, finished when we said",
+    "hero.body": "We take on a small number of jobs at a time and finish them in the order we started them. You will have the price and the week before anything is cut, and the person who quoted it is the person who makes it.",
+    "hero.cta_primary": "Tell us about the job",
+    "hero.cta_secondary": "See how a job runs",
+    "process.heading": "How a job runs",
+    "process.intro": "Four steps, in this order, every time. At the end of each one you are told what happens next and what it will cost.",
+    "services.heading": "What we take on",
+    "services.intro": "Three kinds of work. Most jobs are one of the first two, and the third is what we do between them.",
+    "pricing.heading": "What it costs",
+    "pricing.intro": "Every job is quoted before it starts. These are the three ways that quote gets put together, so you know in advance which one yours will be.",
+    "testimonials.heading": "What people say",
+    "testimonials.intro": "Replace both of these with real quotes, from real customers, with their permission.",
+    "about.heading": "The workshop",
+    "about.body": "A small shop that would rather do a few jobs properly than many of them quickly. Everything is made on the premises, so the person who takes the measurement is the person who cuts to it, and there is nobody to pass the blame to when it is out. We say no to work we are not set up for, and we say it early, which is usually the most useful thing we can do for you.",
+    "about.image": "assets/workshop-placeholder.svg",
+    "about.image_alt": "Placeholder graphic. Replace with a photograph of the workshop or of finished work.",
+    "faq.heading": "Questions we get asked first",
+    "faq.intro": "If yours is not here, call and ask it. The answer is usually shorter than the question.",
+    "contact.heading": "Ask for a quote",
+    "contact.intro": "Send a photograph and a rough measurement, or call and describe it. Either is enough for us to tell you whether it is a job we should be doing.",
+    "contact.address": "Add your workshop address here",
+    "contact.phone": "Add your phone number",
+    "contact.phone_href": "tel:+0000000000",
+    "contact.email": "hello@harbour.com.au",
+    "contact.email_href": "mailto:hello@harbour.com.au",
+    "contact.hours": "Monday to Friday, workshop hours",
+    "footer.blurb": "Built to be edited. Every line on this page is meant to be replaced.",
+    "footer.copyright": "© Your business name"
+  },
+  "groups": {
+    "process.step": [
+      {
+        "title": "We come and measure it",
+        "body": "Or we work from your drawing if you have one. There is no charge for this part and nothing is owed afterwards if you decide not to go ahead."
+      },
+      {
+        "title": "You get it in writing",
+        "body": "One page, itemised, with the lead time on it. Nothing is ordered and no metal is cut until you have said yes to that page."
+      },
+      {
+        "title": "It is made here",
+        "body": "In our own workshop, by the people who quoted it. You get a photograph at the point where changing your mind is still cheap."
+      },
+      {
+        "title": "We fit it and clean up",
+        "body": "Then we walk you around it before we go. Anything not right on the day is put right on the day."
+      }
+    ],
+    "services.item": [
+      {
+        "title": "Fabrication",
+        "body": "One-off pieces made to a drawing, or to a measurement we take ourselves. Stairs, balustrades, gates, frames, brackets, and the awkward part nobody else wanted to quote on.",
+        "detail": "Quoted per job"
+      },
+      {
+        "title": "Repairs and alterations",
+        "body": "Something that has bent, cracked, rusted or stopped closing properly. We will tell you plainly when a repair is worth less than a replacement, including when that costs us the work.",
+        "detail": "Usually within the week"
+      },
+      {
+        "title": "Site work",
+        "body": "Cutting, welding and installation at your place rather than ours, for work that cannot come to the workshop or should not be moved twice.",
+        "detail": "Booked by the day"
+      }
+    ],
+    "pricing.tier": [
+      {
+        "name": "Fixed job price",
+        "price": "Quoted per job",
+        "body": "For work that can be drawn and measured. One number on one page, and it does not move unless you change what you asked for."
+      },
+      {
+        "name": "Day rate",
+        "price": "Booked by the day",
+        "body": "For site work, and for jobs where the scope genuinely is not knowable up front. Whole days, at a rate agreed before the first one."
+      },
+      {
+        "name": "Standing arrangement",
+        "price": "Monthly",
+        "body": "For maintenance that keeps coming back. A set amount of workshop time each month, and first call on the diary when something breaks."
+      }
+    ],
+    "testimonials.item": [
+      {
+        "quote": "They quoted the job nobody else would come and look at, and the number on the invoice was the number on the quote.",
+        "name": "Customer name",
+        "role": "Job, suburb"
+      },
+      {
+        "quote": "It went in on the day they said it would, and they took the old one away without being asked.",
+        "name": "Customer name",
+        "role": "Job, suburb"
+      }
+    ],
+    "faq.item": [
+      {
+        "question": "Do you charge to come and quote?",
+        "answer": "Not for the visit or the quote. If you need drawings prepared before there is anything to quote on, that is separate work and we will say so before doing any of it."
+      },
+      {
+        "question": "How far ahead are you booked?",
+        "answer": "It moves with the season, so the honest answer is on the quote rather than on this page. Repairs are normally fitted in sooner than fabrication."
+      },
+      {
+        "question": "Will you work from my drawing?",
+        "answer": "Yes, and we will check it against the opening before anything is cut. If the drawing and the building disagree, you hear about it that day rather than on delivery day."
+      },
+      {
+        "question": "What if it is not right?",
+        "answer": "Tell us and we come back. Our own mistakes are put right at our cost, and we would rather hear about one early than find out from somebody else later."
+      }
+    ],
+    "rs.review_banner": [
+      {
+        "heading": "This page has not been reviewed yet",
+        "body": "It is a starting point, not legal advice. Every bracketed placeholder below must be replaced by a person, and the whole document read by a qualified lawyer in the relevant jurisdiction, before this site goes live. Delete the element carrying data-rs-slot-group=\"rs.review_banner\" once that is done."
+      }
+    ]
+  },
+  "legal": {
+    "entity": null,
+    "jurisdiction": null,
+    "contact": null
+  }
+}

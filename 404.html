@@ -1,0 +1,327 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <!-- A 404 carries this too, so a client's not-found page is still
+         resolvable back to its repo by the extension. -->
+    <meta name="source-repo" content="rocket-sites/harbour-consulting" />
+
+    <title>Page not found</title>
+    <meta name="description" content="That page does not exist on this site." />
+    <meta name="robots" content="noindex" />
+
+    <link rel="icon" href="assets/favicon.svg" type="image/svg+xml" />
+    <link rel="stylesheet" href="styles.css" />
+
+    <!-- Behaviour switches (templates/SLOTS.md section 6b). Each is a slot: set
+         it to "on" and the behaviour ships with the site. They are "off" here
+         so a site behaves exactly as it did before somebody asked for one.
+
+         The code is behaviours.js, which is part of this template. It runs in
+         the visitor's browser, fetches nothing, and enhances markup that
+         already works without it. A published Rocket Site has no server behind
+         it; that has never meant it cannot run script. -->
+    <meta name="rs-behaviour-mobile-nav" content="off" data-rs-slot="behaviour.mobile_nav" />
+
+    <!-- Deferred: nothing here touches the page before it is parsed. Beacon
+         loads its copy eagerly because its theme behaviour has to set an
+         attribute on <html> before the first paint; forge ships no theme
+         behaviour, so there is nothing to race. -->
+    <script src="behaviours.js" defer></script>
+  </head>
+
+  <body class="flex min-h-screen flex-col bg-canvas font-sans text-ink antialiased lg:pl-72">
+    <a
+      href="#main"
+      class="sr-only rounded-lg bg-ink px-4 py-2 text-sm font-semibold text-canvas focus:not-sr-only focus:absolute focus:left-4 focus:top-4 focus:z-[60]"
+      >Skip to main content</a
+    >
+
+    <header
+      id="rail"
+      class="sticky top-0 z-40 border-b border-hairline bg-surface lg:fixed lg:inset-y-0 lg:left-0 lg:flex lg:w-72 lg:flex-col lg:overflow-y-auto lg:border-b-0 lg:border-r"
+    >
+      <div
+        class="flex items-center justify-between gap-4 px-4 py-3 sm:px-6 lg:block lg:px-6 lg:py-8"
+      >
+        <a
+          href="index.html"
+          class="flex items-center gap-3 rounded-sm focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-accent"
+        >
+          <img
+            src="assets/logo.svg"
+            alt=""
+            aria-hidden="true"
+            width="40"
+            height="40"
+            class="h-9 w-9"
+          />
+          <span
+            class="font-display text-xl font-bold tracking-tight text-ink"
+            data-rs-slot="business.name"
+            >Harbour Consulting</span
+          >
+        </a>
+
+        <!-- Native disclosure, so the menu opens and closes with scripting
+             off. behaviour.mobile_nav adds only what the element cannot do for
+             itself: close on Escape, on an outside click, and after a visitor
+             follows a link to another part of this page. -->
+        <details class="relative lg:hidden" data-rs-mobile-nav>
+          <summary
+            class="flex h-10 w-10 cursor-pointer list-none items-center justify-center rounded-lg border border-hairline text-ink focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-accent"
+          >
+            <span class="sr-only">Menu</span>
+            <svg
+              class="h-5 w-5"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="2"
+              stroke-linecap="round"
+              aria-hidden="true"
+            >
+              <path d="M4 7h16M4 12h16M4 17h16" />
+            </svg>
+          </summary>
+          <ul
+            class="absolute right-0 z-50 mt-3 w-64 rounded-xl border border-hairline bg-surface p-2 text-sm font-semibold text-ink shadow-2xl"
+          >
+            <li><a href="index.html#process" class="block rounded-lg px-3 py-2 hover:bg-canvas">How a job runs</a></li>
+            <li><a href="index.html#services" class="block rounded-lg px-3 py-2 hover:bg-canvas">What we take on</a></li>
+            <li><a href="index.html#pricing" class="block rounded-lg px-3 py-2 hover:bg-canvas">What it costs</a></li>
+            <li><a href="index.html#faq" class="block rounded-lg px-3 py-2 hover:bg-canvas">Questions</a></li>
+            <li class="mt-2 border-t border-hairline pt-2">
+              <a
+                href="tel:+0000000000"
+                data-rs-slot="contact.phone_href"
+                class="block rounded-lg px-3 py-2 hover:bg-canvas"
+                ><span data-rs-slot="contact.phone">Add your phone number</span></a
+              >
+            </li>
+            <li>
+              <a
+                href="index.html#contact"
+                class="mt-1 block rounded-lg bg-accent px-3 py-2 text-center text-on-accent"
+                data-rs-slot="nav.cta"
+                >Ask for a quote</a
+              >
+            </li>
+          </ul>
+        </details>
+      </div>
+
+      <nav class="hidden px-6 lg:block" aria-label="Primary">
+        <ul class="space-y-1 text-sm font-semibold">
+          <li>
+            <a
+              href="index.html#process"
+              class="block rounded-lg px-3 py-2 text-muted hover:bg-canvas hover:text-ink focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-accent"
+              >How a job runs</a
+            >
+          </li>
+          <li>
+            <a
+              href="index.html#services"
+              class="block rounded-lg px-3 py-2 text-muted hover:bg-canvas hover:text-ink focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-accent"
+              >What we take on</a
+            >
+          </li>
+          <li>
+            <a
+              href="index.html#pricing"
+              class="block rounded-lg px-3 py-2 text-muted hover:bg-canvas hover:text-ink focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-accent"
+              >What it costs</a
+            >
+          </li>
+          <li>
+            <a
+              href="index.html#faq"
+              class="block rounded-lg px-3 py-2 text-muted hover:bg-canvas hover:text-ink focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-accent"
+              >Questions</a
+            >
+          </li>
+        </ul>
+      </nav>
+
+      <div class="mt-auto hidden px-6 pb-8 pt-10 lg:block">
+        <p class="text-xs font-semibold uppercase tracking-[0.18em] text-muted">
+          Call the workshop
+        </p>
+        <a
+          href="tel:+0000000000"
+          data-rs-slot="contact.phone_href"
+          class="mt-2 block font-display text-lg text-ink underline decoration-hairline underline-offset-4 hover:decoration-accent focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-accent"
+          ><span data-rs-slot="contact.phone">Add your phone number</span></a
+        >
+        <a
+          href="index.html#contact"
+          class="mt-5 block rounded-full bg-accent px-5 py-3 text-center text-sm font-semibold text-on-accent hover:bg-accent/90 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-accent"
+          data-rs-slot="nav.cta"
+          >Ask for a quote</a
+        >
+      </div>
+    </header>
+
+    <main id="main" tabindex="-1" class="flex flex-1 items-center bg-canvas">
+      <div class="mx-auto w-full max-w-5xl px-4 py-20 sm:px-6 lg:px-10">
+        <p class="flex items-center gap-4">
+          <span class="h-px w-10 bg-accent" aria-hidden="true"></span>
+          <span class="text-xs font-semibold uppercase tracking-[0.22em] text-accent"
+            >Error 404</span
+          >
+        </p>
+        <h1
+          class="mt-8 max-w-3xl font-display text-4xl font-bold leading-[1.05] tracking-tight text-ink sm:text-5xl"
+        >
+          That page does not exist
+        </h1>
+        <p class="mt-6 max-w-xl text-lg leading-8 text-muted">
+          The address may have been mistyped, or the page may have been moved or removed.
+          Nothing is broken at your end.
+        </p>
+
+        <div class="mt-10 flex flex-wrap gap-3">
+          <a
+            href="index.html"
+            class="rounded-full bg-accent px-6 py-3 text-sm font-semibold text-on-accent hover:bg-accent/90 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-accent"
+            >Back to the home page</a
+          >
+          <a
+            href="index.html#contact"
+            class="rounded-full border border-hairline px-6 py-3 text-sm font-semibold text-ink hover:bg-surface focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-accent"
+            >Tell us what you were after</a
+          >
+        </div>
+
+        <nav aria-label="Site sections" class="mt-14 border-t border-hairline pt-8">
+          <h2 class="text-xs font-semibold uppercase tracking-[0.18em] text-ink">
+            Or try one of these
+          </h2>
+          <ul class="mt-4 grid gap-2 text-muted sm:grid-cols-2">
+            <li>
+              <a
+                href="index.html#process"
+                class="rounded-sm hover:text-accent focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-accent"
+                >How a job runs</a
+              >
+            </li>
+            <li>
+              <a
+                href="index.html#services"
+                class="rounded-sm hover:text-accent focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-accent"
+                >What we take on</a
+              >
+            </li>
+            <li>
+              <a
+                href="index.html#pricing"
+                class="rounded-sm hover:text-accent focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-accent"
+                >What it costs</a
+              >
+            </li>
+            <li>
+              <a
+                href="index.html#faq"
+                class="rounded-sm hover:text-accent focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-accent"
+                >Questions</a
+              >
+            </li>
+          </ul>
+        </nav>
+      </div>
+    </main>
+
+    <footer id="footer" class="border-t border-hairline bg-canvas">
+      <div class="mx-auto max-w-5xl px-4 py-12 sm:px-6 lg:px-10">
+        <div class="grid gap-10 sm:grid-cols-2">
+          <div>
+            <div class="flex items-center gap-3">
+              <img
+                src="assets/logo.svg"
+                alt=""
+                aria-hidden="true"
+                width="40"
+                height="40"
+                class="h-8 w-8"
+              />
+              <span
+                class="font-display text-base font-bold tracking-tight text-ink"
+                data-rs-slot="business.name"
+                >Harbour Consulting</span
+              >
+            </div>
+            <p class="mt-4 max-w-xs leading-7 text-muted" data-rs-slot="business.tagline">AI consulting</p>
+          </div>
+
+          <div class="grid gap-8 sm:grid-cols-2">
+            <nav aria-label="Footer">
+              <h2 class="text-xs font-semibold uppercase tracking-[0.18em] text-ink">Site</h2>
+              <ul class="mt-4 space-y-2 text-muted">
+                <li>
+                  <a
+                    href="index.html#process"
+                    class="rounded-sm hover:text-accent focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-accent"
+                    >How a job runs</a
+                  >
+                </li>
+                <li>
+                  <a
+                    href="index.html#services"
+                    class="rounded-sm hover:text-accent focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-accent"
+                    >What we take on</a
+                  >
+                </li>
+                <li>
+                  <a
+                    href="index.html#pricing"
+                    class="rounded-sm hover:text-accent focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-accent"
+                    >What it costs</a
+                  >
+                </li>
+                <li>
+                  <a
+                    href="index.html#contact"
+                    class="rounded-sm hover:text-accent focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-accent"
+                    >Contact</a
+                  >
+                </li>
+              </ul>
+            </nav>
+
+            <nav aria-label="Legal">
+              <h2 class="text-xs font-semibold uppercase tracking-[0.18em] text-ink">Legal</h2>
+              <ul class="mt-4 space-y-2 text-muted">
+                <li>
+                  <a
+                    href="privacy.html"
+                    class="rounded-sm hover:text-accent focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-accent"
+                    >Privacy policy</a
+                  >
+                </li>
+                <li>
+                  <a
+                    href="terms.html"
+                    class="rounded-sm hover:text-accent focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-accent"
+                    >Terms of use</a
+                  >
+                </li>
+              </ul>
+            </nav>
+          </div>
+        </div>
+
+        <div
+          class="mt-10 flex flex-col gap-3 border-t border-hairline pt-6 text-sm text-muted sm:flex-row sm:items-center sm:justify-between"
+        >
+          <p data-rs-slot="footer.blurb">
+            Built to be edited. Every line on this page is meant to be replaced.
+          </p>
+          <p data-rs-slot="footer.copyright">&copy; Your business name</p>
+        </div>
+      </div>
+    </footer>
+  </body>
+</html>

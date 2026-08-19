@@ -1,0 +1,101 @@
+/* Forge - Tailwind build input.
+ *
+ * This is the file an author edits for anything that is not a brand value. The
+ * publisher runs the Tailwind CLI over it once in CI and emits a purged
+ * styles.css next to the pages. styles.css is gitignored: it is generated, and
+ * a committed copy drifts away from its input.
+ *
+ *   cd templates && npm install && npm run build:forge
+ *
+ * ── Tailwind 4, and there is no config file ────────────────────────────
+ *
+ * There used to be a tailwind.config.cjs here, and Tailwind 3 did not parse it,
+ * it `require`d it: building a client's site executed a CommonJS module out of
+ * the client's own repository (#148, #167). Tailwind 4's theme is CSS, so there
+ * is nothing to execute, and the brand values are not in this file either.
+ *
+ * ── Where the brand tokens are, and why not here ───────────────────────
+ *
+ * In rocket-site.json, under `brand`. The publisher reads them as DATA and
+ * generates the `@theme` block this file is built with, so a brand value exists
+ * in exactly one place and a rebrand is a JSON edit. The chain is mechanical
+ * and has no lookup table in it:
+ *
+ *   rocket-site.json brand["color-accent"]  ->  --color-accent  ->  bg-accent
+ *
+ * Forge is a DARK template, and nothing about that is special-cased: `canvas`
+ * is still the page background and `ink` is still the text drawn on it, they
+ * are simply the other way round from beacon. The one consequence is that
+ * `bg-ink text-canvas`, which beacon uses for its dark contact band, is a LIGHT
+ * band here. It is used that way in the pricing section, and it needs no new
+ * token to be one.
+ *
+ * The hex values moved to rocket-site.json; the measurements taken on them did
+ * not, because JSON has nowhere to write them. Against WCAG 2.1 AA, for every
+ * pair the pages actually use:
+ *
+ *   ink       on canvas   16.72:1     ink      on surface  15.26:1
+ *   muted     on canvas    7.28:1     muted    on surface   6.64:1
+ *   accent    on canvas    7.45:1     accent   on surface   6.80:1
+ *   on-accent on accent    7.45:1
+ *   hairline  on canvas    3.92:1     hairline on surface   3.57:1
+ *   canvas    on ink      16.72:1  (the inverted pricing band)
+ *
+ * hairline is only ever used at full strength on a real border. An opacity
+ * modifier on it would take a 3.57:1 divider below the 3:1 floor, which is the
+ * one place in this palette where there is no headroom to spend. Re-measure
+ * these if you change a value in rocket-site.json: the numbers are about that
+ * file now, and nothing checks them for you.
+ *
+ * The consequence to know before you reach for the CLI directly: this file does
+ * NOT build into a usable stylesheet on its own, because on its own it has no
+ * theme. `npm run build:forge` composes the two. That is the cost of having one
+ * copy of a brand value instead of two that can disagree.
+ *
+ * ── No @import and no @source in this file, on purpose ────────────────
+ *
+ * Both belong to the composed input. `@import "tailwindcss"` resolves
+ * `node_modules` against the directory of the file that writes it, and a
+ * client's site repository has no `node_modules`; a relative `@source` would be
+ * read against the composer's temporary directory, match nothing, and purge
+ * every class on every page. So the composer writes both, and every source is
+ * an absolute path passed in from that side.
+ *
+ * Everything below is a rule that cannot be expressed as a class on an element
+ * the author controls. There is nothing else here on purpose: layout, spacing
+ * and typography are literal utility classes in the HTML, so the source matches
+ * the rendered DOM and the model editing it is reading the same bytes the
+ * browser is.
+ */
+
+@layer base {
+  /* Three rules, and each exists because it cannot be expressed as a class on
+   * an element the author controls: one styles the viewport itself, one removes
+   * a user-agent marker on the native disclosure widgets used for the mobile
+   * menu and the FAQ, and the last stops a long unbroken string in a slot value
+   * pushing the page sideways on a narrow screen. None of them changes what any
+   * utility class means. */
+  html {
+    scroll-behavior: smooth;
+    /* On narrow screens the header is sticky, so an anchor jump must not land
+     * the heading underneath it. */
+    scroll-padding-top: 5rem;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    html {
+      scroll-behavior: auto;
+    }
+  }
+
+  summary::-webkit-details-marker {
+    display: none;
+  }
+
+  /* A slot holds text the template author never sees. An email address or a
+   * URL pasted into one is a single unbreakable word, and at 360px wide that is
+   * a horizontal scrollbar on every page. */
+  body {
+    overflow-wrap: break-word;
+  }
+}

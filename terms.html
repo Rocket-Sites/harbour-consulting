@@ -1,0 +1,409 @@
+<!--
+  TERMS OF USE TEMPLATE. THIS IS NOT LEGAL ADVICE.
+
+  This document is a starting point and nothing more. It has been written
+  deliberately generic, because the template cannot know who is publishing it,
+  where they are, what they sell, or what the law requires of them.
+
+  Before this site goes live:
+
+    1. A qualified lawyer in the relevant jurisdiction must read it.
+    2. Every bracketed placeholder must be replaced by a person who knows the
+       answer. [ENTITY], [JURISDICTION], [CONTACT] and [DATE] are placeholders.
+       They are never filled by a generator, and never guessed.
+    3. Every clause must be checked against what [ENTITY] actually does. These
+       terms cover the website only. The terms of a quote, and the consumer
+       guarantees that come with work done for a customer, are a separate
+       document and in most places cannot be signed away by a line on a web
+       page. A limitation of liability that is unenforceable where you trade is
+       worse than no clause at all, because it reads as though it protects you.
+
+  A confident-looking document full of invented specifics is worse than an
+  obviously unfinished one. The visible banner at the top of the page says so to
+  whoever is previewing it; delete the element carrying
+  data-rs-slot-group="rs.review_banner" once the review is genuinely done.
+-->
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="source-repo" content="rocket-sites/harbour-consulting" />
+
+    <title>Terms of use</title>
+    <meta
+      name="description"
+      content="The terms this website is provided under. Requires review before launch."
+    />
+    <meta name="robots" content="noindex" />
+
+    <link rel="icon" href="assets/favicon.svg" type="image/svg+xml" />
+    <link rel="stylesheet" href="styles.css" />
+
+    <!-- Behaviour switches (templates/SLOTS.md section 6b). Each is a slot: set
+         it to "on" and the behaviour ships with the site. They are "off" here
+         so a site behaves exactly as it did before somebody asked for one.
+
+         The code is behaviours.js, which is part of this template. It runs in
+         the visitor's browser, fetches nothing, and enhances markup that
+         already works without it. A published Rocket Site has no server behind
+         it; that has never meant it cannot run script. -->
+    <meta name="rs-behaviour-mobile-nav" content="off" data-rs-slot="behaviour.mobile_nav" />
+
+    <!-- Deferred: nothing here touches the page before it is parsed. Beacon
+         loads its copy eagerly because its theme behaviour has to set an
+         attribute on <html> before the first paint; forge ships no theme
+         behaviour, so there is nothing to race. -->
+    <script src="behaviours.js" defer></script>
+  </head>
+
+  <body class="bg-canvas font-sans text-ink antialiased lg:pl-72">
+    <a
+      href="#main"
+      class="sr-only rounded-lg bg-ink px-4 py-2 text-sm font-semibold text-canvas focus:not-sr-only focus:absolute focus:left-4 focus:top-4 focus:z-[60]"
+      >Skip to main content</a
+    >
+
+    <header
+      id="rail"
+      class="sticky top-0 z-40 border-b border-hairline bg-surface lg:fixed lg:inset-y-0 lg:left-0 lg:flex lg:w-72 lg:flex-col lg:overflow-y-auto lg:border-b-0 lg:border-r"
+    >
+      <div
+        class="flex items-center justify-between gap-4 px-4 py-3 sm:px-6 lg:block lg:px-6 lg:py-8"
+      >
+        <a
+          href="index.html"
+          class="flex items-center gap-3 rounded-sm focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-accent"
+        >
+          <img
+            src="assets/logo.svg"
+            alt=""
+            aria-hidden="true"
+            width="40"
+            height="40"
+            class="h-9 w-9"
+          />
+          <span
+            class="font-display text-xl font-bold tracking-tight text-ink"
+            data-rs-slot="business.name"
+            >Harbour Consulting</span
+          >
+        </a>
+
+        <!-- Native disclosure, so the menu opens and closes with scripting
+             off. behaviour.mobile_nav adds only what the element cannot do for
+             itself: close on Escape, on an outside click, and after a visitor
+             follows a link to another part of this page. -->
+        <details class="relative lg:hidden" data-rs-mobile-nav>
+          <summary
+            class="flex h-10 w-10 cursor-pointer list-none items-center justify-center rounded-lg border border-hairline text-ink focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-accent"
+          >
+            <span class="sr-only">Menu</span>
+            <svg
+              class="h-5 w-5"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="2"
+              stroke-linecap="round"
+              aria-hidden="true"
+            >
+              <path d="M4 7h16M4 12h16M4 17h16" />
+            </svg>
+          </summary>
+          <ul
+            class="absolute right-0 z-50 mt-3 w-64 rounded-xl border border-hairline bg-surface p-2 text-sm font-semibold text-ink shadow-2xl"
+          >
+            <li><a href="index.html#process" class="block rounded-lg px-3 py-2 hover:bg-canvas">How a job runs</a></li>
+            <li><a href="index.html#services" class="block rounded-lg px-3 py-2 hover:bg-canvas">What we take on</a></li>
+            <li><a href="index.html#pricing" class="block rounded-lg px-3 py-2 hover:bg-canvas">What it costs</a></li>
+            <li><a href="index.html#faq" class="block rounded-lg px-3 py-2 hover:bg-canvas">Questions</a></li>
+            <li class="mt-2 border-t border-hairline pt-2">
+              <a
+                href="tel:+0000000000"
+                data-rs-slot="contact.phone_href"
+                class="block rounded-lg px-3 py-2 hover:bg-canvas"
+                ><span data-rs-slot="contact.phone">Add your phone number</span></a
+              >
+            </li>
+            <li>
+              <a
+                href="index.html#contact"
+                class="mt-1 block rounded-lg bg-accent px-3 py-2 text-center text-on-accent"
+                data-rs-slot="nav.cta"
+                >Ask for a quote</a
+              >
+            </li>
+          </ul>
+        </details>
+      </div>
+
+      <nav class="hidden px-6 lg:block" aria-label="Primary">
+        <ul class="space-y-1 text-sm font-semibold">
+          <li>
+            <a
+              href="index.html#process"
+              class="block rounded-lg px-3 py-2 text-muted hover:bg-canvas hover:text-ink focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-accent"
+              >How a job runs</a
+            >
+          </li>
+          <li>
+            <a
+              href="index.html#services"
+              class="block rounded-lg px-3 py-2 text-muted hover:bg-canvas hover:text-ink focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-accent"
+              >What we take on</a
+            >
+          </li>
+          <li>
+            <a
+              href="index.html#pricing"
+              class="block rounded-lg px-3 py-2 text-muted hover:bg-canvas hover:text-ink focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-accent"
+              >What it costs</a
+            >
+          </li>
+          <li>
+            <a
+              href="index.html#faq"
+              class="block rounded-lg px-3 py-2 text-muted hover:bg-canvas hover:text-ink focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-accent"
+              >Questions</a
+            >
+          </li>
+        </ul>
+      </nav>
+
+      <div class="mt-auto hidden px-6 pb-8 pt-10 lg:block">
+        <p class="text-xs font-semibold uppercase tracking-[0.18em] text-muted">
+          Call the workshop
+        </p>
+        <a
+          href="tel:+0000000000"
+          data-rs-slot="contact.phone_href"
+          class="mt-2 block font-display text-lg text-ink underline decoration-hairline underline-offset-4 hover:decoration-accent focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-accent"
+          ><span data-rs-slot="contact.phone">Add your phone number</span></a
+        >
+        <a
+          href="index.html#contact"
+          class="mt-5 block rounded-full bg-accent px-5 py-3 text-center text-sm font-semibold text-on-accent hover:bg-accent/90 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-accent"
+          data-rs-slot="nav.cta"
+          >Ask for a quote</a
+        >
+      </div>
+    </header>
+
+    <main id="main" tabindex="-1" class="bg-canvas">
+      <article class="mx-auto max-w-3xl px-4 py-12 sm:px-6 lg:px-10 lg:py-16">
+        <h1 class="font-display text-3xl font-bold tracking-tight text-ink sm:text-4xl">
+          Terms of use
+        </h1>
+        <p class="mt-3 text-sm text-muted">Last updated: [DATE]</p>
+
+        <!-- The visible half of the review warning. An HTML comment is invisible
+             to the person previewing this site in a browser, and that person is
+             exactly who the rule is protecting. Nothing takes this banner away
+             for you (#268): a person fills the placeholders above and deletes
+             this element in the same edit, once the review is genuinely done.
+             -->
+        <div
+          role="note"
+          class="mt-8 flex gap-4 rounded-2xl border-2 border-accent bg-surface p-5"
+          data-rs-slot-group="rs.review_banner"
+        >
+          <svg
+            class="mt-0.5 h-6 w-6 shrink-0 text-accent"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="1.8"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            aria-hidden="true"
+          >
+            <path d="M12 9v4.5" />
+            <path d="M12 17h.01" />
+            <path d="M10.3 3.9 2.5 17.4A2 2 0 0 0 4.2 20.4h15.6a2 2 0 0 0 1.7-3L13.7 3.9a2 2 0 0 0-3.4 0Z" />
+          </svg>
+          <div>
+            <p
+              class="font-display text-base font-bold text-ink"
+              data-rs-slot="rs.review_banner.heading"
+            >
+              This page has not been reviewed yet
+            </p>
+            <p class="mt-2 leading-7 text-muted" data-rs-slot="rs.review_banner.body">
+              It is a starting point, not legal advice. Every bracketed placeholder below
+              must be replaced by a person, and the whole document read by a qualified
+              lawyer in the relevant jurisdiction, before this site goes live.
+            </p>
+          </div>
+        </div>
+
+        <h2 class="mt-12 font-display text-2xl font-bold text-ink">What these terms cover</h2>
+        <p class="mt-4 leading-7 text-muted">
+          These terms apply to this website, which is published by [ENTITY]. Using the
+          site means accepting them. They are governed by the law of [JURISDICTION].
+        </p>
+        <p class="mt-4 leading-7 text-muted">
+          They do not cover the work itself. A quote, an order or a job carried out by
+          [ENTITY] is governed by the terms given with that quote, together with whatever
+          rights the law of [JURISDICTION] gives a customer. Where the two disagree, the
+          quote and the law come first and this page comes last.
+        </p>
+
+        <h2 class="mt-10 font-display text-2xl font-bold text-ink">Nothing here is a quote</h2>
+        <p class="mt-4 leading-7 text-muted">
+          Prices, lead times, availability and descriptions of work on this site are
+          general information. They are not an offer, and they do not bind [ENTITY] to a
+          price for your job. A price is a price once it is written on a quote for the
+          work you have described, and only for as long as that quote says it holds.
+        </p>
+
+        <h2 class="mt-10 font-display text-2xl font-bold text-ink">Keeping the site accurate</h2>
+        <p class="mt-4 leading-7 text-muted">
+          [ENTITY] takes reasonable care with what it publishes here, and it may change,
+          correct or remove anything on the site at any time without notice. Photographs
+          of past work are examples, not a promise that yours will be identical.
+        </p>
+
+        <h2 class="mt-10 font-display text-2xl font-bold text-ink">What you agree not to do</h2>
+        <p class="mt-4 leading-7 text-muted">
+          Do not use this site to break the law, to interfere with how it runs, to try to
+          reach parts of it that are not public, or to copy it wholesale for your own use.
+        </p>
+
+        <h2 class="mt-10 font-display text-2xl font-bold text-ink">Who owns what is here</h2>
+        <p class="mt-4 leading-7 text-muted">
+          The text, images and drawings on this site belong to [ENTITY] or to whoever
+          licensed them to [ENTITY], except where something says otherwise. You may read
+          the site, and print or share a page of it, for your own non-commercial purposes.
+          Anything beyond that needs permission.
+        </p>
+
+        <h2 class="mt-10 font-display text-2xl font-bold text-ink">Links to other sites</h2>
+        <p class="mt-4 leading-7 text-muted">
+          Where this site links somewhere else, that place is somebody else's and [ENTITY]
+          does not control it. A link is not an endorsement, and [ENTITY] is not
+          responsible for what is on the other end of it.
+        </p>
+
+        <h2 class="mt-10 font-display text-2xl font-bold text-ink">Liability</h2>
+        <p class="mt-4 leading-7 text-muted">
+          This site is provided as it is. To the extent the law of [JURISDICTION] allows,
+          [ENTITY] is not liable for loss arising from using it, or from being unable to
+          use it. The law of [JURISDICTION] gives consumers rights that cannot be excluded
+          by a clause on a web page, and nothing here is meant to exclude them. The
+          wording that actually holds where [ENTITY] trades must be confirmed by a lawyer
+          before this page is published, because a clause that does not hold is worse than
+          no clause at all.
+        </p>
+
+        <h2 class="mt-10 font-display text-2xl font-bold text-ink">Changes to these terms</h2>
+        <p class="mt-4 leading-7 text-muted">
+          These terms may change. The current version is always the one published on this
+          page, and the date it last changed is shown at the top. Continuing to use the
+          site after a change means accepting the version that is up.
+        </p>
+
+        <h2 class="mt-10 font-display text-2xl font-bold text-ink">Law and where disputes go</h2>
+        <p class="mt-4 leading-7 text-muted">
+          These terms are governed by the law of [JURISDICTION], and the courts of
+          [JURISDICTION] deal with any dispute about them.
+        </p>
+
+        <h2 class="mt-10 font-display text-2xl font-bold text-ink">How to get in touch</h2>
+        <p class="mt-4 leading-7 text-muted">
+          Questions about these terms go to [CONTACT].
+        </p>
+      </article>
+    </main>
+
+    <footer id="footer" class="border-t border-hairline bg-canvas">
+      <div class="mx-auto max-w-5xl px-4 py-12 sm:px-6 lg:px-10">
+        <div class="grid gap-10 sm:grid-cols-2">
+          <div>
+            <div class="flex items-center gap-3">
+              <img
+                src="assets/logo.svg"
+                alt=""
+                aria-hidden="true"
+                width="40"
+                height="40"
+                class="h-8 w-8"
+              />
+              <span
+                class="font-display text-base font-bold tracking-tight text-ink"
+                data-rs-slot="business.name"
+                >Harbour Consulting</span
+              >
+            </div>
+            <p class="mt-4 max-w-xs leading-7 text-muted" data-rs-slot="business.tagline">AI consulting</p>
+          </div>
+
+          <div class="grid gap-8 sm:grid-cols-2">
+            <nav aria-label="Footer">
+              <h2 class="text-xs font-semibold uppercase tracking-[0.18em] text-ink">Site</h2>
+              <ul class="mt-4 space-y-2 text-muted">
+                <li>
+                  <a
+                    href="index.html#process"
+                    class="rounded-sm hover:text-accent focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-accent"
+                    >How a job runs</a
+                  >
+                </li>
+                <li>
+                  <a
+                    href="index.html#services"
+                    class="rounded-sm hover:text-accent focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-accent"
+                    >What we take on</a
+                  >
+                </li>
+                <li>
+                  <a
+                    href="index.html#pricing"
+                    class="rounded-sm hover:text-accent focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-accent"
+                    >What it costs</a
+                  >
+                </li>
+                <li>
+                  <a
+                    href="index.html#contact"
+                    class="rounded-sm hover:text-accent focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-accent"
+                    >Contact</a
+                  >
+                </li>
+              </ul>
+            </nav>
+
+            <nav aria-label="Legal">
+              <h2 class="text-xs font-semibold uppercase tracking-[0.18em] text-ink">Legal</h2>
+              <ul class="mt-4 space-y-2 text-muted">
+                <li>
+                  <a
+                    href="privacy.html"
+                    class="rounded-sm hover:text-accent focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-accent"
+                    >Privacy policy</a
+                  >
+                </li>
+                <li>
+                  <a
+                    href="terms.html"
+                    class="rounded-sm hover:text-accent focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-accent"
+                    >Terms of use</a
+                  >
+                </li>
+              </ul>
+            </nav>
+          </div>
+        </div>
+
+        <div
+          class="mt-10 flex flex-col gap-3 border-t border-hairline pt-6 text-sm text-muted sm:flex-row sm:items-center sm:justify-between"
+        >
+          <p data-rs-slot="footer.blurb">
+            Built to be edited. Every line on this page is meant to be replaced.
+          </p>
+          <p data-rs-slot="footer.copyright">&copy; Your business name</p>
+        </div>
+      </div>
+    </footer>
+  </body>
+</html>
